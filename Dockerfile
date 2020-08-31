@@ -21,7 +21,9 @@ RUN apt-get update && apt-get install -y \
     postgresql \ 
     postgresql-contrib \
     libpq-dev \
-    libonig-dev
+    libonig-dev \
+    php7.4-mysql \
+    php7.4-pgsql
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
