@@ -45,6 +45,8 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 RUN rm -f /etc/localtime
 RUN ln -s /usr/share/zoneinfo/Asia/Manila /etc/localtime
 
+RUN docker-php-ext-install bcmath sockets
+
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
