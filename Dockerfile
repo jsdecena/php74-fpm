@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     libcurl4-openssl-dev \
     pkg-config \
-    libssl-dev \
+    libssl-dev
 
 RUN pecl config-set php_ini /etc/php.ini
 
@@ -43,9 +43,6 @@ RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql gd zip mbstring exif pcntl
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
-
-RUN rm -f /etc/localtime
-RUN ln -s /usr/share/zoneinfo/Asia/Manila /etc/localtime
 
 RUN docker-php-ext-install bcmath sockets
 
