@@ -28,7 +28,7 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     libcurl4-openssl-dev \
     pkg-config \
-    libssl-dev
+    libssl-dev \
 
 RUN pecl config-set php_ini /etc/php.ini
 
@@ -36,6 +36,8 @@ RUN curl http://pecl.php.net/get/ssh2-1.2.tgz -o ssh2.tgz && \
     pecl install ssh2 ssh2.tgz && \
     docker-php-ext-enable ssh2 && \
     rm -rf ssh2.tgz
+
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg && docker-php-ext-install -j$(nproc) gd
 
 RUN docker-php-ext-install pdo pdo_mysql pdo_pgsql gd zip mbstring exif pcntl
 
